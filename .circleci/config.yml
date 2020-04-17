@@ -6,6 +6,9 @@ orbs:
 
 jobs:
   test-install:
+    build:
+      docker:
+        - image: cimg/base:2020.01
     steps:
       - checkout
       - ddev-live/install
