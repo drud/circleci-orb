@@ -7,3 +7,7 @@ steps:
     command: |
       ddev-live create site
       ddev-live describe
+  - run:
+    name: monitor
+    command: |
+      ddev-live get
