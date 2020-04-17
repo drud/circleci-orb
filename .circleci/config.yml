@@ -23,3 +23,7 @@ workflows:
           requires:
             - orb-tools/lint
             - orb-tools/pack
+
+  integration:
+    jobs:
+      - test-install
