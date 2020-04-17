@@ -1,0 +1,15 @@
+description: >
+  Installs homebrew and the ddev-live client
+steps:
+  - ddev-live/install
+  - run:
+      name: Install Homebrew (for Linux)
+      command: |
+        curl -fsSL "https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh" | bash
+        /home/linuxbrew/.linuxbrew/bin/brew shellenv >> $BASH_ENV
+  - run:
+      name: Install ddev-live
+      command: |
+        brew tap drud/ddev-live
+        brew install ddev-live
+        ddev-live --version

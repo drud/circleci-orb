@@ -1,0 +1,15 @@
+version: 2.1
+
+orbs:
+  orb-tools: circleci/orb-tools@9.1.0
+  ddev-live: ddev/ddev-live@dev:alpha
+workflows:
+  lint_pack-validate_publish-dev:
+    jobs:
+      - orb-tools/lint
+
+      - orb-tools/publish-dev:
+          orb-name: ddev/ddev-live
+          requires:
+            - orb-tools/lint
+            - orb-tools/pack
