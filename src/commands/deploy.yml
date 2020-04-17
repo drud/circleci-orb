@@ -2,7 +2,7 @@ description: >
   Installs homebrew and the ddev-live client
 steps:
   - ddev-live/deploy
-    - run:
-      name: deploy
-      command: |
-        ddev-live create site
+  - run:
+    name: deploy
+    command: |
+      ddev-live create site
