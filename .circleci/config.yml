@@ -7,6 +7,7 @@ workflows:
   lint_pack-validate_publish-dev:
     jobs:
       - orb-tools/lint
+      - orb-tools/pack
 
       - orb-tools/publish-dev:
           orb-name: ddev/ddev-live
