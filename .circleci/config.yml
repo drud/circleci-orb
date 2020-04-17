@@ -3,6 +3,13 @@ version: 2.1
 orbs:
   orb-tools: circleci/orb-tools@9.1.0
   ddev-live: ddev/ddev-live@dev:alpha
+
+jobs:
+  test-install:
+    steps:
+      - checkout
+      - ddev-live/install
+
 workflows:
   lint_pack-validate_publish-dev:
     jobs:
