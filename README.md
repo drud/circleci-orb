@@ -6,4 +6,3 @@
 
 ## DDEV Live documentation
 - [ddev-live cli reference ](https://docs.ddev.com)
-

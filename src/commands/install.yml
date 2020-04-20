@@ -4,11 +4,19 @@ steps:
   - run:
       name: Install Homebrew (for Linux)
       command: |
-        curl -fsSL "https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh" | bash
-        /home/linuxbrew/.linuxbrew/bin/brew shellenv >> $BASH_ENV
+        if [[ $(command -v brew) == "" ]]; then
+          curl -fsSL "https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh" | bash
+          /home/linuxbrew/.linuxbrew/bin/brew shellenv >> $BASH_ENV
+        else
+          echo "Homebrew is already installed. Skipping"
+        fi
   - run:
       name: Install ddev-live
       command: |
-        brew tap drud/ddev-live
-        brew install ddev-live
-        ddev-live --version
+        if [[ $(command -v ddev-live) == "" ]]; then
+          brew tap drud/ddev-live
+          brew install ddev-live
+          ddev-live --version
+        else
+          echo "ddev-live is already installed. Skipping"
+        fi
