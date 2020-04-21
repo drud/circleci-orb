@@ -7,6 +7,6 @@ parameters:
     default: DDEV_LIVE_TOKEN
 steps:
   - run:
-      name: Auth with DDEV Live CLI
+      name: Auth ddev-live
       command: |
         ddev-live auth --token=${<< parameters.ddev-live-token >>}
