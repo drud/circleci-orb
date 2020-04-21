@@ -1,0 +1,16 @@
+description:
+parameters:
+  ddev-live-token:
+    description: >
+      Name of env var containing your DDEV Live API token. Pass this as a raw string such as DDEV_TOKEN.
+      Do not paste the actual token into your configuration, just the variable name from the project settings in CircleCI
+    type: env_var_name
+    default: DDEV_LIVE_TOKEN
+steps:
+  -when:
+    condition: << parameters.ddev-live-token >>
+    steps:
+      - run:
+          name: Auth with DDEV Live CLI
+          command: |
+            ddev-live auth --token=${<< parameters.ddev-live-token >>}
