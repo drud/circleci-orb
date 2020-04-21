@@ -6,10 +6,7 @@ parameters:
     type: env_var_name
     default: DDEV_LIVE_TOKEN
 steps:
-  - when:
-    condition: << parameters.ddev-live-token >>
-    steps:
-      - run:
-          name: Auth with DDEV Live CLI
-          command: |
-            ddev-live auth --token=${<< parameters.ddev-live-token >>}
+  - run:
+      name: Auth with DDEV Live CLI
+      command: |
+        ddev-live auth --token=${<< parameters.ddev-live-token >>}
