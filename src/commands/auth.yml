@@ -9,11 +9,16 @@ parameters:
     default: DDEV_LIVE_TOKEN
   default-org:
     description: >
-      Sets your default organziation
+      Sets your default organization
     type: string
-    default: false
+    default: ''
 steps:
   - run:
       name: Auth with DDEV Live CLI
       command: |
-        ddev-live auth --token=${<< parameters.ddev-live-token >>} --default-org=${<< parameters.default-org >>}
+        if [[ -z "<<parameters.default-org>>" ]]; then
+          ddev-live auth --token=${<< parameters.ddev-live-token >>}
+        else
+          ddev-live auth --token=${<< parameters.ddev-live-token >>} --default-org=${<< parameters.default-org >>}
+        fi
+
