@@ -1,3 +1,5 @@
+description: >
+  Authenticates the CLI with the DDEV Live API and optionally, pass the default-org flag
 parameters:
   ddev-live-token:
     description: >
@@ -5,8 +7,13 @@ parameters:
       Do not paste the actual token into your configuration, just the variable name from the project settings in CircleCI
     type: env_var_name
     default: DDEV_LIVE_TOKEN
+  default-org:
+    description: >
+      Sets your default organziation
+    type: string
+    default: false
 steps:
   - run:
       name: Auth with DDEV Live CLI
       command: |
-        ddev-live auth --token=${<< parameters.ddev-live-token >>}
+        ddev-live auth --token=${<< parameters.ddev-live-token >>} --default-org=${<< parameters.default-org >>}
