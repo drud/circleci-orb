@@ -1,4 +1,3 @@
-description:
 parameters:
   ddev-live-token:
     description: >
@@ -7,7 +6,7 @@ parameters:
     type: env_var_name
     default: DDEV_LIVE_TOKEN
 steps:
-  -when:
+  - when:
     condition: << parameters.ddev-live-token >>
     steps:
       - run:
