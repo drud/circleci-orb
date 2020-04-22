@@ -10,6 +10,10 @@ parameters:
     description: >
       The type of site you plan on launching, either drupal, typo3, or wordpress
     type: string
+  extra-params:
+    description: >
+      Other params that you'd like to pass to the ddev-live create command
+    type: string
 steps:
   - run:
       name: Deploy to ddev-live
@@ -23,4 +27,4 @@ steps:
           repo=${BASH_REMATCH[5]}
         fi
 
-        ddev-live create site drupal $SITENAME --github-repo=$user/$repo --branch=${CIRCLE_BRANCH#*/}
+        ddev-live create site <<parameters.site-type>> $SITENAME --github-repo=$user/$repo --branch=${CIRCLE_BRANCH#*/} <<parameters.extra-params>>
