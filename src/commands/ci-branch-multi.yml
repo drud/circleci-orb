@@ -19,7 +19,7 @@ steps:
   - run:
       name: Deploy to ddev-live
       command: |
-        SITENAME=<<parameters.prefix>>-${CIRCLE_BRANCH#*/}-$CIRCLE_BUILD_NUM
+        export DDEV_SITENAME=<<parameters.prefix>>-${CIRCLE_BRANCH#*/}-$CIRCLE_BUILD_NUM
 
         re="^(https|git)(:\/\/|@)([^\/:]+)[\/:]([^\/:]+)\/(.+).git$"
 
@@ -28,4 +28,4 @@ steps:
           repo=${BASH_REMATCH[5]}
         fi
 
-        ddev-live create site <<parameters.site-type>> $SITENAME --github-repo=$user/$repo --branch=${CIRCLE_BRANCH#*/} <<parameters.extra-params>>
+        ddev-live create site <<parameters.site-type>> $DDEV_SITENAME --github-repo=$user/$repo --branch=${CIRCLE_BRANCH#*/} <<parameters.extra-params>>

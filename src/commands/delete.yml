@@ -1,0 +1,5 @@
+steps:
+  - run:
+      name: Delete ddev-live site
+      command: |
+        ddev-live delete site ${DDEV_SITENAME}
