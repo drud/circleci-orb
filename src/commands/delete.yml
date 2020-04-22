@@ -2,4 +2,5 @@ steps:
   - run:
       name: Delete ddev-live site
       command: |
+        source $BASH_ENV
         ddev-live delete site ${DDEV_SITENAME}
