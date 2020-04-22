@@ -3,4 +3,4 @@ steps:
       name: Delete ddev-live site
       command: |
         source $BASH_ENV
-        ddev-live delete site ${DDEV_SITENAME}
+        ddev-live delete site --yes ${DDEV_SITENAME}
