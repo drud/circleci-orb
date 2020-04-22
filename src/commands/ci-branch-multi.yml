@@ -29,4 +29,4 @@ steps:
           repo=${BASH_REMATCH[5]}
         fi
 
-        ddev-live create site <<parameters.site-type>> SITENAME --github-repo=$user/$repo --branch=${CIRCLE_BRANCH#*/} <<parameters.extra-params>>
+        ddev-live create site <<parameters.site-type>> $SITENAME --github-repo=$user/$repo --branch=${CIRCLE_BRANCH#*/} <<parameters.extra-params>>
