@@ -14,14 +14,13 @@ steps:
   - run:
       name: Deploy to ddev-live
       command: |
-        set -x
         SITENAME=<<parameters.prefix>>-${CIRCLE_BRANCH#*/}-$CIRCLE_BUILD_NUM
 
         re="^(https|git)(:\/\/|@)([^\/:]+)[\/:]([^\/:]+)\/(.+).git$"
 
         if [[ "$CIRCLE_REPOSITORY_URL" =~ $re ]]; then
-          user=${BASH_REMATCH[5]}
-          repo=${BASH_REMATCH[6]}
+          user=${BASH_REMATCH[4]}
+          repo=${BASH_REMATCH[5]}
         fi
 
         ddev-live create site drupal $SITENAME --github-repo=$user/$repo --branch=${CIRCLE_BRANCH#*/}
