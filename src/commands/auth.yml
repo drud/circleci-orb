@@ -14,11 +14,10 @@ parameters:
     default: ''
 steps:
   - run:
-      name: Auth with DDEV Live CLI
+      name: Auth to ddev-live
       command: |
         if [[ -z "<<parameters.default-org>>" ]]; then
           ddev-live auth --token=${<< parameters.ddev-live-token >>}
         else
           ddev-live auth --token=${<< parameters.ddev-live-token >>} --default-org=${<< parameters.default-org >>}
         fi
-

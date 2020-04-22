@@ -1,0 +1,26 @@
+description: >
+  Creates and deploys code to multiple sites
+parameters:
+  prefix:
+    description: >
+      The prefix that your site name will be launched, for example uat-branch-build-number, the prefix would be uat.
+    type: string
+    default: 'uat'
+  site-type:
+    description: >
+      The type of site you plan on launching, either drupal, typo3, or wordpress
+    type: string
+steps:
+  - run:
+      name: Deploy to ddev-live
+      command: |
+        SITENAME=<<parameters.prefix>>-${CIRCLE_BRANCH#*/}-$CIRCLE_BUILD_NUM
+
+        re="^(https|git)(:\/\/|@)([^\/:]+)[\/:]([^\/:]+)\/(.+).git$"
+
+        if [[ "$CIRCLE_REPOSITORY_URL" =~ $re ]]; then
+          user=${BASH_REMATCH[5]}
+          repo=${BASH_REMATCH[6]}
+        fi
+
+        ddev-live create site drupal $SITENAME --github-repo=$user/$repo --branch=${CIRCLE_BRANCH#*/}
