@@ -19,7 +19,7 @@ steps:
   - run:
       name: Deploy to ddev-live
       command: |
-        export DDEV_SITENAME=<<parameters.prefix>>-${CIRCLE_BRANCH#*/}-$CIRCLE_BUILD_NUM
+        export DDEV_SITENAME=<<parameters.prefix>>-${CIRCLE_BRANCH#*/}-$CIRCLE_BUILD_NUM >> $BASH_ENV
 
         re="^(https|git)(:\/\/|@)([^\/:]+)[\/:]([^\/:]+)\/(.+).git$"
 
