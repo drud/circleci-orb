@@ -19,5 +19,5 @@ steps:
         if [[ -z "<<parameters.default-org>>" ]]; then
           ddev-live auth --token=${<< parameters.ddev-live-token >>}
         else
-          ddev-live auth --token=${<< parameters.ddev-live-token >>} --default-org=${<< parameters.default-org >>}
+          ddev-live auth --token=${<< parameters.ddev-live-token >>} --default-org=<< parameters.default-org >>
         fi
